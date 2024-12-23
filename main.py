@@ -147,16 +147,42 @@ def generate_final_proposal(industry, focus_areas, use_cases, datasets, company_
     with open("final_proposal.md", "w") as f:
         f.write(proposal_content)
 
-# Main Function
+# Main Function for Streamlit App
 def main():
     st.title("Multi-Agent AI/ML Use Case Generator")
+    
+    # Input field for company name
     company_name = st.text_input("Enter Company Name")
+    
     if company_name:
+        # Generate industries and focus areas
         industries, focus_areas = research_industry(company_name)
+        
+        # Display industries and focus areas on the page
+        st.write("### Identified Industries:")
+        st.write(", ".join(industries))
+        
+        st.write("### Identified Focus Areas:")
+        st.write(", ".join(focus_areas))
+        
+        # Generate use cases
         use_cases = generate_use_cases(industries, focus_areas)
+        
+        # Display use cases on the page
+        st.write("### Generated Use Cases:")
+        for idx, case in enumerate(use_cases, 1):
+            st.write(f"{idx}. {case}")
+        
+        # Collect datasets
         datasets = collect_datasets(use_cases)
-        generate_final_proposal(industries, focus_areas, use_cases, datasets, company_name)
-        st.write("Final Proposal Generated. Check the `final_proposal.md` file.")
+        
+        # Display datasets on the page
+        st.write("### Relevant Datasets:")
+        for case, dataset_ref in datasets:
+            if "Error" in dataset_ref:
+                st.write(f"Use Case: {case} - Dataset Not Available")
+            else:
+                st.write(f"Use Case: {case} - [Dataset Link](https://www.kaggle.com/datasets/{dataset_ref})")
 
 if __name__ == "__main__":
     main()
