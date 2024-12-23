@@ -22,7 +22,7 @@ api.authenticate()
 login(os.getenv("HF_API_KEY", "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"))
 
 # NVIDIA API Key
-NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY", "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")  # Replace with your NVIDIA API key
+NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY", "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")  # Replace with your NVIDIA API key
 NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1"
 
 # Research Agent using NVIDIA API
