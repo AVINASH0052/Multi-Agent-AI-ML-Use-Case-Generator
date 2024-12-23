@@ -16,8 +16,8 @@ NVIDIA_API_KEY = "nvapi-audYnesLDRXRRZqjIDgl7GZdRVhVLbNRLtKH97dgT0MKLlgAPx6F3MVs
 NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1"
 
 # Load API Keys
-KAGGLE_USERNAME = os.getenv("avinashvikramsingh")
-KAGGLE_KEY = os.getenv("55fd683bd1a2e18e3b207bdce916976b")
+KAGGLE_USERNAME = "avinashvikramsingh"
+KAGGLE_KEY = "55fd683bd1a2e18e3b207bdce916976b"
 
 # Research Agent using NVIDIA API
 def research_industry(company_name: str):
