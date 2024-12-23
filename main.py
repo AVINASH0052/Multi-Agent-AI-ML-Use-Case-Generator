@@ -5,6 +5,10 @@ import kaggle
 import streamlit as st
 import graphviz
 from dotenv import load_dotenv
+from kaggle.api.kaggle_api_extended import KaggleApi
+
+api = KaggleApi()
+api.authenticate()
 load_dotenv()
 
 from huggingface_hub import login
