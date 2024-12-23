@@ -178,21 +178,6 @@ def generate_final_proposal(industry: list, focus_areas: list, use_cases: list, 
     with open("final_proposal.md", "w") as f:
         f.write(proposal_content)
 
-def generate_architecture_flowchart():
-    """Generate a flowchart representing the architecture of the system."""
-    try:
-        dot = graphviz.Digraph(comment='Multi-Agent Architecture')
-        dot.node('A', 'Research Agent')
-        dot.node('B', 'Market Standards & Use Case Generation Agent')
-        dot.node('C', 'Resource Asset Collection Agent')
-        dot.node('D', 'Final Proposal Generation')
-        dot.node('E', 'Streamlit App')
-        dot.edges([('A', 'B'), ('B', 'C'), ('C', 'D'), ('D', 'E')])
-        dot.render('architecture_flowchart', format='png')
-    except graphviz.backend.ExecutableNotFound as e:
-        print("Graphviz executable not found. Skipping flowchart generation.")
-        st.error("Graphviz executable not found. Flowchart cannot be generated.")
-
 
 # Main Function
 def main():
