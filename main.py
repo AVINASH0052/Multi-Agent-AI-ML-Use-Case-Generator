@@ -188,7 +188,6 @@ def main():
         use_cases = generate_use_cases(industries, focus_areas)
         datasets = collect_datasets(use_cases)
         generate_final_proposal(industries, focus_areas, use_cases, datasets, company_name)
-        generate_architecture_flowchart()
         streamlit_app()
 
 def streamlit_app():
