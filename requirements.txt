@@ -4,3 +4,4 @@ numpy
 requests
 kaggle
 graphviz
+python-dotenv
