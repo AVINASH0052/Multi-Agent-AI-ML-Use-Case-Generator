@@ -1,7 +1,6 @@
 streamlit
-pandas
-numpy
 requests
+python-dotenv
 kaggle
 graphviz
-python-dotenv
+huggingface-hub
