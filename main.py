@@ -129,15 +129,13 @@ def generate_use_cases(industry: list, focus_areas: list):
         print(f"Error: {response.status_code} - {response.text}")
         return ["Error generating use cases with NVIDIA API."]
 
-# Resource Asset Collection Agent
 def collect_datasets(use_cases: list):
     """Collect relevant datasets for the generated use cases."""
-    kaggle.api.authenticate()
-    
     datasets = []
     for case in use_cases:
         try:
-            results = kaggle.api.dataset_list(search=case, file_type="csv")
+            # Use the `api` object to list datasets
+            results = api.dataset_list(search=case, file_type="csv")
             limited_results = results[:5] if len(results) > 5 else results
             for result in limited_results:
                 datasets.append((case, result.ref))
@@ -145,6 +143,7 @@ def collect_datasets(use_cases: list):
             print(f"Error retrieving dataset for '{case}': {str(e)}")
             datasets.append((case, "Error retrieving dataset"))
     
+    # Save datasets to a markdown file for review
     with open("datasets.md", "w") as f:
         for use_case, dataset_ref in datasets:
             dataset_link = f"https://www.kaggle.com/datasets/{dataset_ref}" if "Error" not in dataset_ref else "Dataset not available"
